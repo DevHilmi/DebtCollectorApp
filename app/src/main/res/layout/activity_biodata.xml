@@ -126,6 +126,7 @@
             android:textColorHint="@color/colorGrey" />
 
         <Button
+            android:id="@+id/buttonRegisterRegister"
             android:layout_width="110dp"
             android:layout_height="wrap_content"
             android:layout_alignEnd="@id/editTextZipcodeRegister"
@@ -136,6 +137,7 @@
             android:text="@string/register" />
 
         <Button
+            android:id="@+id/buttonBackRegister"
             android:layout_width="110dp"
             android:layout_height="wrap_content"
             android:layout_alignStart="@id/editTextProvinceRegister"
