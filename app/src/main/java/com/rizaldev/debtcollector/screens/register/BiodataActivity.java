@@ -16,24 +16,15 @@ public class BiodataActivity extends AppCompatActivity {
     Button back, register;
 
     public static boolean emptyCheck(String check) {
-        if (TextUtils.isEmpty(check)) {
-            return false;
-        }
-        return true;
+        return !TextUtils.isEmpty(check);
     }
 
     public static boolean checkPhone(String phone) {
-        if (phone.charAt(0) == 0 || phone.length() < 7 || phone.length() > 13) {
-            return false;
-        }
-        return true;
+        return !(phone.charAt(0) == 0 || phone.length() < 7 || phone.length() > 13);
     }
 
     public static boolean checkZip(String zip) {
-        if (zip.length() >= 10) {
-            return false;
-        }
-        return true;
+        return zip.length() < 10;
     }
 
     @Override
@@ -49,62 +40,62 @@ public class BiodataActivity extends AppCompatActivity {
         back = findViewById(R.id.buttonBackRegister);
         register = findViewById(R.id.buttonRegisterRegister);
 
-        register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Boolean checkValid = true;
-                String nameString = name.getText().toString();
-                String phoneString = phone.getText().toString();
-                String addressString = address.getText().toString();
-                String cityString = city.getText().toString();
-                String provinceString = province.getText().toString();
-                String zipString = zip.getText().toString();
+        register.setOnClickListener(view -> {
+            Boolean checkValid = true;
+            String nameString = name.getText().toString();
+            String phoneString = phone.getText().toString();
+            String addressString = address.getText().toString();
+            String cityString = city.getText().toString();
+            String provinceString = province.getText().toString();
+            String zipString = zip.getText().toString();
 
-                if (!emptyCheck(nameString)) {
-                    name.setError("Field tidak boleh kosong");
-                    checkValid = false;
-                }
+            if (!emptyCheck(nameString)) {
+                name.setError("Field tidak boleh kosong");
+                checkValid = false;
+            }
 
-                if (!emptyCheck(phoneString)) {
-                    phone.setError("Field tidak boleh kosong");
-                    checkValid = false;
-                } else if (!checkPhone(phoneString)) {
-                    phone.setError("Nomor Telefon tidak benar");
-                    checkValid = false;
-                }
+            if (!emptyCheck(phoneString)) {
+                phone.setError("Field tidak boleh kosong");
+                checkValid = false;
+            } else if (!checkPhone(phoneString)) {
+                phone.setError("Nomor Telefon tidak benar");
+                checkValid = false;
+            }
 
-                if (!emptyCheck(addressString)) {
-                    address.setError("Field tidak boleh kosong");
-                    checkValid = false;
-                }
+            if (!emptyCheck(addressString)) {
+                address.setError("Field tidak boleh kosong");
+                checkValid = false;
+            }
 
-                if (!emptyCheck(cityString)) {
-                    city.setError("Field tidak boleh kosong");
-                    checkValid = false;
-                }
+            if (!emptyCheck(cityString)) {
+                city.setError("Field tidak boleh kosong");
+                checkValid = false;
+            }
 
-                if (!emptyCheck(provinceString)) {
-                    province.setError("Field tidak boleh kosong");
-                    checkValid = false;
-                }
+            if (!emptyCheck(provinceString)) {
+                province.setError("Field tidak boleh kosong");
+                checkValid = false;
+            }
 
-                if (!emptyCheck(zipString)) {
-                    zip.setError("Field tidak boleh kosong");
-                    checkValid = false;
-                }
+            if (!emptyCheck(zipString)) {
+                zip.setError("Field tidak boleh kosong");
+                checkValid = false;
+            } else if (!checkZip(zipString)){
+                zip.setError("Zip tidak boleh lebih dari 10 karkater");
+                checkValid = false;
+            }
 
-                if (checkValid) {
-                    Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
-                    Bundle extras = new Bundle();
-                    extras.putString("name", nameString);
-                    extras.putString("phone", phoneString);
-                    extras.putString("address", addressString);
-                    extras.putString("city", cityString);
-                    extras.putString("province", provinceString);
-                    extras.putString("zip", zipString);
-                    intent.putExtras(extras);
-                    startActivity(intent);
-                }
+            if (checkValid) {
+                Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
+                Bundle extras = new Bundle();
+                extras.putString("name", nameString);
+                extras.putString("phone", phoneString);
+                extras.putString("address", addressString);
+                extras.putString("city", cityString);
+                extras.putString("province", provinceString);
+                extras.putString("zip", zipString);
+                intent.putExtras(extras);
+                startActivity(intent);
             }
         });
     }
