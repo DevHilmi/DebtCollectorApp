@@ -1,19 +1,9 @@
 package com.rizaldev.debtcollector.screens.splash;
 
 import android.content.Intent;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Window;
-import android.view.WindowManager;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
-import android.view.animation.DecelerateInterpolator;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.rizaldev.debtcollector.R;
 import com.rizaldev.debtcollector.application.AppController;
 import com.rizaldev.debtcollector.screens.login.LoginActivity;
 import com.rizaldev.debtcollector.screens.splash.core.SplashPresenter;

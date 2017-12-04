@@ -16,7 +16,7 @@ public class LoginContextModule {
     public LoginContextModule(LoginActivity context) {
         this.loginContext = context;
     }
-    @SplashScope
+    @LoginScope
     @Provides
     LoginActivity provideLoginContext() {
         return loginContext;

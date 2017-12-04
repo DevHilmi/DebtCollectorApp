@@ -2,7 +2,9 @@ package com.rizaldev.debtcollector.screens.splash.core;
 
 import com.rizaldev.debtcollector.utils.rx.RxSchedulers;
 
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.schedulers.Schedulers;
 
 public class SplashPresenter {
 
@@ -19,7 +21,8 @@ public class SplashPresenter {
     }
 
     public void onCreate() {
-        subscriptions.add(model.delaySplash().doOnNext(o -> model.navigateToLogin()).subscribe());
+        subscriptions.add(model.delaySplash() .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread()).doOnNext(o -> model.navigateToLogin()).subscribe());
         view.showAnimation(2000);
     }
 

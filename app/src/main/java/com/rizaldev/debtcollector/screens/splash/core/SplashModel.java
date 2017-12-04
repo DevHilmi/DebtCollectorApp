@@ -8,7 +8,6 @@ import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 /**
@@ -26,11 +25,8 @@ public class SplashModel {
     Observable<Boolean> isNetworkAvailable() {
         return NetworkUtils.isNetworkAvailableObservable(context);
     }
-    Disposable delaySplash(){
-        return Observable.just(true).delay(3000, TimeUnit.MILLISECONDS)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnNext(o -> navigateToLogin()).subscribe();
+    Observable delaySplash(){
+        return Observable.just(true).delay(3000, TimeUnit.MILLISECONDS);
     }
     public void navigateToLogin() {
         context.navigateToLogin();

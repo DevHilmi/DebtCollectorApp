@@ -19,21 +19,21 @@ import io.reactivex.disposables.CompositeDisposable;
 
 @Module
 public class LoginModule {
-    @SplashScope
+    @LoginScope
     @Provides
     LoginPresenter providePresenter(RxSchedulers schedulers, LoginView view , LoginModel model){
         CompositeDisposable subscriptions = new CompositeDisposable();
         return new LoginPresenter(view,model, schedulers, subscriptions);
     }
 
-    @SplashScope
+    @LoginScope
     @Provides
     LoginView provideSplashView(LoginActivity context) {
         return new LoginView(context);
     }
 
 
-    @SplashScope
+    @LoginScope
     @Provides
     LoginModel provideSplashModel(LoginActivity context) {
         return new LoginModel(context);
