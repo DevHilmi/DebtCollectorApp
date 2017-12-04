@@ -16,10 +16,7 @@ public class RegisterActivity extends AppCompatActivity {
     Button next;
 
     public static boolean emptyCheck(String check) {
-        if (TextUtils.isEmpty(check)) {
-            return false;
-        }
-        return true;
+        return !TextUtils.isEmpty(check);
     }
 
     public static boolean checkEmail(CharSequence email) {
@@ -36,17 +33,11 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public static boolean checkPassLength(String pass) {
-        if (TextUtils.isEmpty(pass) || pass.length() < 8) {
-            return false;
-        }
-        return true;
+        return !(TextUtils.isEmpty(pass) || pass.length() < 8);
     }
 
     public static boolean checkRepass(String pass, String repass) {
-        if (pass.equals(repass)) {
-            return true;
-        }
-        return false;
+        return pass.equals(repass);
     }
 
     @Override
@@ -61,54 +52,51 @@ public class RegisterActivity extends AppCompatActivity {
 
         //================================================//
 
-        next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Boolean checkValid = true;
-                String usernameString = username.getText().toString();
-                String emailString = email.getText().toString();
-                String passwordString = password.getText().toString();
-                String repasswordString = repassword.getText().toString();
+        next.setOnClickListener(view -> {
+            Boolean checkValid = true;
+            String usernameString = username.getText().toString();
+            String emailString = email.getText().toString();
+            String passwordString = password.getText().toString();
+            String repasswordString = repassword.getText().toString();
 
-                if (!emptyCheck(usernameString)) {
-                    username.setError("Username tidak boleh kosong");
-                    checkValid = false;
-                }
+            if (!emptyCheck(usernameString)) {
+                username.setError("Username tidak boleh kosong");
+                checkValid = false;
+            }
 
-                if (!emptyCheck(emailString)) {
-                    email.setError("Email tidak boleh kosong");
-                    checkValid = false;
-                } else if (!checkEmail(emailString)) {
-                    email.setError("Format email tidak sesuai");
-                    checkValid = false;
-                }
+            if (!emptyCheck(emailString)) {
+                email.setError("Email tidak boleh kosong");
+                checkValid = false;
+            } else if (!checkEmail(emailString)) {
+                email.setError("Format email tidak sesuai");
+                checkValid = false;
+            }
 
-                if (!emptyCheck(passwordString)) {
-                    password.setError("Password tidak boleh kosong");
-                    checkValid = false;
-                } else if (!checkPassLetter(passwordString) || !checkPassLength(passwordString)) {
-                    password.setError("Password minimal 8 karakter dan memiliki huruf dan angka");
-                    checkValid = false;
-                }
+            if (!emptyCheck(passwordString)) {
+                password.setError("Password tidak boleh kosong");
+                checkValid = false;
+            } else if (!checkPassLetter(passwordString) || !checkPassLength(passwordString)) {
+                password.setError("Password minimal 8 karakter dan memiliki huruf dan angka");
+                checkValid = false;
+            }
 
-                if (!emptyCheck(repasswordString)) {
-                    repassword.setError("Password kedua tidak boleh kosong");
-                    checkValid = false;
-                } else if (!checkRepass(passwordString, repasswordString)) {
-                    repassword.setError("Password kedua tidak sesuai");
-                    checkValid = false;
-                }
+            if (!emptyCheck(repasswordString)) {
+                repassword.setError("Password kedua tidak boleh kosong");
+                checkValid = false;
+            } else if (!checkRepass(passwordString, repasswordString)) {
+                repassword.setError("Password kedua tidak sesuai");
+                checkValid = false;
+            }
 
-                if (checkValid) {
-                    Intent intent = new Intent(getApplicationContext(), BiodataActivity.class);
-                    Bundle extras = new Bundle();
-                    extras.putString("username", usernameString);
-                    extras.putString("email", emailString);
-                    extras.putString("password", passwordString);
-                    extras.putString("repassword", repasswordString);
-                    intent.putExtras(extras);
-                    startActivity(intent);
-                }
+            if (checkValid) {
+                Intent intent = new Intent(getApplicationContext(), BiodataActivity.class);
+                Bundle extras = new Bundle();
+                extras.putString("username", usernameString);
+                extras.putString("email", emailString);
+                extras.putString("password", passwordString);
+                extras.putString("repassword", repasswordString);
+                intent.putExtras(extras);
+                startActivity(intent);
             }
         });
     }
