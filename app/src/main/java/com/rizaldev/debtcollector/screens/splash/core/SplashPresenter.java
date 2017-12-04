@@ -2,12 +2,7 @@ package com.rizaldev.debtcollector.screens.splash.core;
 
 import com.rizaldev.debtcollector.utils.rx.RxSchedulers;
 
-import io.reactivex.Observable;
 import io.reactivex.disposables.CompositeDisposable;
-
-/**
- * Created by devel on 22/10/2017.
- */
 
 public class SplashPresenter {
 
@@ -24,9 +19,7 @@ public class SplashPresenter {
     }
 
     public void onCreate() {
-        // TODO: Usage of network available check
-        // Boolean networkAvailable = subscriptions.add(model.isNetworkAvailable().subscribe());
-        subscriptions.add(model.delaySplash());
+        subscriptions.add(model.delaySplash().doOnNext(o -> model.navigateToLogin()).subscribe());
         view.showAnimation(2000);
     }
 
