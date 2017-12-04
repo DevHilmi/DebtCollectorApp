@@ -15,6 +15,17 @@ public class RegisterActivity extends AppCompatActivity {
     EditText username, email, password, repassword;
     Button next;
 
+    public static boolean emptyCheck(String check) {
+        if (TextUtils.isEmpty(check)) {
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean checkEmail(CharSequence email) {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
+
     public static boolean checkPassLetter(String pass) {
         for (int i = 0; i < pass.length(); i++) {
             if (!Character.isLetterOrDigit((pass.charAt(i)))) {
@@ -32,14 +43,10 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public static boolean checkRepass(String pass, String repass) {
-        if (pass != repass) {
-            return false;
+        if (pass.equals(repass)) {
+            return true;
         }
-        return true;
-    }
-
-    public static boolean checkEmail(CharSequence email) {
-        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+        return false;
     }
 
     @Override
@@ -63,17 +70,31 @@ public class RegisterActivity extends AppCompatActivity {
                 String passwordString = password.getText().toString();
                 String repasswordString = repassword.getText().toString();
 
-                if (!checkEmail(emailString)) {
+                if (!emptyCheck(usernameString)) {
+                    username.setError("Username tidak boleh kosong");
+                    checkValid = false;
+                }
+
+                if (!emptyCheck(emailString)) {
+                    email.setError("Email tidak boleh kosong");
+                    checkValid = false;
+                } else if (!checkEmail(emailString)) {
                     email.setError("Format email tidak sesuai");
                     checkValid = false;
                 }
 
-                if (!checkPassLetter(passwordString) || !checkPassLength(passwordString)) {
+                if (!emptyCheck(passwordString)) {
+                    password.setError("Password tidak boleh kosong");
+                    checkValid = false;
+                } else if (!checkPassLetter(passwordString) || !checkPassLength(passwordString)) {
                     password.setError("Password minimal 8 karakter dan memiliki huruf dan angka");
                     checkValid = false;
                 }
 
-                if (!checkRepass(passwordString, repasswordString)) {
+                if (!emptyCheck(repasswordString)) {
+                    repassword.setError("Password kedua tidak boleh kosong");
+                    checkValid = false;
+                } else if (!checkRepass(passwordString, repasswordString)) {
                     repassword.setError("Password kedua tidak sesuai");
                     checkValid = false;
                 }

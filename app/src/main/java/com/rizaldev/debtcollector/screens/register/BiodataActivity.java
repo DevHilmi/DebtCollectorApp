@@ -15,8 +15,25 @@ public class BiodataActivity extends AppCompatActivity {
     EditText name, phone, address, city, province, zip;
     Button back, register;
 
+    public static boolean emptyCheck(String check) {
+        if (TextUtils.isEmpty(check)) {
+            return false;
+        }
+        return true;
+    }
+
     public static boolean checkPhone(String phone) {
-        return android.util.Patterns.PHONE.matcher(phone).matches();
+        if (phone.charAt(0) == 0 || phone.length() < 7 || phone.length() > 13) {
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean checkZip(String zip) {
+        if (zip.length() >= 10) {
+            return false;
+        }
+        return true;
     }
 
     @Override
@@ -43,12 +60,40 @@ public class BiodataActivity extends AppCompatActivity {
                 String provinceString = province.getText().toString();
                 String zipString = zip.getText().toString();
 
-                if (!checkPhone(phoneString)){
+                if (!emptyCheck(nameString)) {
+                    name.setError("Field tidak boleh kosong");
+                    checkValid = false;
+                }
+
+                if (!emptyCheck(phoneString)) {
+                    phone.setError("Field tidak boleh kosong");
+                    checkValid = false;
+                } else if (!checkPhone(phoneString)) {
                     phone.setError("Nomor Telefon tidak benar");
                     checkValid = false;
                 }
 
-                if (checkValid){
+                if (!emptyCheck(addressString)) {
+                    address.setError("Field tidak boleh kosong");
+                    checkValid = false;
+                }
+
+                if (!emptyCheck(cityString)) {
+                    city.setError("Field tidak boleh kosong");
+                    checkValid = false;
+                }
+
+                if (!emptyCheck(provinceString)) {
+                    province.setError("Field tidak boleh kosong");
+                    checkValid = false;
+                }
+
+                if (!emptyCheck(zipString)) {
+                    zip.setError("Field tidak boleh kosong");
+                    checkValid = false;
+                }
+
+                if (checkValid) {
                     Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
                     Bundle extras = new Bundle();
                     extras.putString("name", nameString);
