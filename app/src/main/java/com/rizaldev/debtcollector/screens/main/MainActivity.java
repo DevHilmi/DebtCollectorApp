@@ -45,12 +45,9 @@ public class MainActivity extends AppCompatActivity {
         });
         setNotificationCount(10);
         ImageButton notification = actionBar.findViewById(R.id.buttonRight);
-        notification.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, NotificationActivity.class);
-                startActivity(intent);
-            }
+        notification.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, NotificationActivity.class);
+            startActivity(intent);
         });
     }
 
@@ -63,4 +60,5 @@ public class MainActivity extends AppCompatActivity {
         }
         textNotificationCount.setText(String.valueOf(count));
     }
+
 }

@@ -52,6 +52,7 @@ public class LoginPresenter {
 
                 @Override
                 public void onFailure(Call<User> call, Throwable t) {
+                    view.dismissLoading();
                     Log.d("go here",t.getMessage());
                 }
             });

@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.rizaldev.debtcollector.api.DebtPref;
 import com.rizaldev.debtcollector.application.AppController;
 import com.rizaldev.debtcollector.screens.login.LoginActivity;
+import com.rizaldev.debtcollector.screens.main.MainActivity;
 import com.rizaldev.debtcollector.screens.splash.core.SplashPresenter;
 import com.rizaldev.debtcollector.screens.splash.core.SplashView;
 import com.rizaldev.debtcollector.screens.splash.dagger.DaggerSplashComponent;
@@ -13,7 +15,7 @@ import com.rizaldev.debtcollector.screens.splash.dagger.SplashContextModule;
 
 import javax.inject.Inject;
 
-public class SplashActivity extends AppCompatActivity  {
+public class SplashActivity extends AppCompatActivity {
 
     @Inject
     SplashPresenter splashPresenter;
@@ -38,9 +40,16 @@ public class SplashActivity extends AppCompatActivity  {
     }
 
     public void navigateToLogin() {
-        Intent mainIntent = new Intent(SplashActivity.this, LoginActivity.class);
-        SplashActivity.this.startActivity(mainIntent);
-        SplashActivity.this.finish();
+        if (DebtPref.getTokenPref(this).trim().equals("")) {
+            Intent mainIntent = new Intent(SplashActivity.this, LoginActivity.class);
+            SplashActivity.this.startActivity(mainIntent);
+            SplashActivity.this.finish();
+        } else {
+            Intent mainIntent = new Intent(SplashActivity.this, MainActivity.class);
+            SplashActivity.this.startActivity(mainIntent);
+            SplashActivity.this.finish();
+        }
+
     }
 
 }

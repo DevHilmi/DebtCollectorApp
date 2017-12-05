@@ -19,5 +19,9 @@ import retrofit2.http.Query;
 public interface DebtApi {
     @FormUrlEncoded
     @POST("login.php")
-    Call<User> login(@Field("username") String username,@Field("password") String password);
+    Call<User> login(@Field("username") String username, @Field("password") String password);
+
+    @FormUrlEncoded
+    @POST("register.php")
+    Call<User> register(@Field("username") String username, @Field("email") String email, @Field("password") String password, @Field("name") String name, @Field("phone") String phone, @Field("address") String address, @Field("city") String city, @Field("province") String province, @Field("postal_code") String postal_code);
 }
