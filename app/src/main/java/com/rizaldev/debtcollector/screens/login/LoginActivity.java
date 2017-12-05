@@ -8,7 +8,7 @@ import com.rizaldev.debtcollector.application.AppController;
 import com.rizaldev.debtcollector.screens.login.core.LoginPresenter;
 import com.rizaldev.debtcollector.screens.login.core.LoginView;
 import com.rizaldev.debtcollector.screens.login.dagger.DaggerLoginComponent;
-import com.rizaldev.debtcollector.screens.login.dagger.LoginContextModule;
+import com.rizaldev.debtcollector.screens.login.dagger.LoginModule;
 import com.rizaldev.debtcollector.screens.main.MainActivity;
 import com.rizaldev.debtcollector.screens.register.RegisterActivity;
 
@@ -25,7 +25,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        DaggerLoginComponent.builder().appComponent(AppController.getNetComponent()).loginContextModule(new LoginContextModule(this)).build().inject(this);
+        DaggerLoginComponent.builder().appComponent(AppController.getNetComponent()).loginModule(new LoginModule(this)).build().inject(this);
         setContentView(loginView.constructView());
         loginPresenter.onCreate();
     }

@@ -86,7 +86,7 @@ public class BiodataActivity extends AppCompatActivity {
             }
 
             if (checkValid) {
-                Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
+                Intent intent = this.getIntent();
                 Bundle extras = new Bundle();
                 extras.putString("name", nameString);
                 extras.putString("phone", phoneString);

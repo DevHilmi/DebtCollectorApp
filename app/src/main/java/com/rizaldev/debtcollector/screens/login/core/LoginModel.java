@@ -1,5 +1,11 @@
 package com.rizaldev.debtcollector.screens.login.core;
 
+import android.preference.PreferenceManager;
+import android.util.Log;
+
+import com.rizaldev.debtcollector.api.DebtApi;
+import com.rizaldev.debtcollector.api.DebtPref;
+import com.rizaldev.debtcollector.models.User;
 import com.rizaldev.debtcollector.screens.login.LoginActivity;
 
 import io.reactivex.Observable;
@@ -8,18 +14,28 @@ import io.reactivex.Observable;
 
 public class LoginModel {
     LoginActivity context;
+    DebtApi api;
 
-    public LoginModel(LoginActivity context) {
+    public LoginModel(LoginActivity context,DebtApi api) {
         this.context = context;
+        this.api = api;
     }
 
-    private boolean login(String username,String password){
 
-        return false;
+
+//   Observable<User> loginObservable(String username, String password){
+//       Log.d("miaw", "masuk sini 2");
+//        return api.login(username,password);
+//    }
+
+    public void saveToken(String token){
+        DebtPref.saveTokenPref(token,context);
     }
-
-   Observable<Boolean> loginObserable(String username, String password){
-        return Observable.just(login(username,password));
+    public void navigateToMain() {
+        context.navigateToMain();
+    }
+    public void navigateToRegister() {
+        context.navigateToRegister();
     }
 
 }

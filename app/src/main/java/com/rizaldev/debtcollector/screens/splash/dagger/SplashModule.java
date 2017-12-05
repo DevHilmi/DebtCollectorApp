@@ -17,6 +17,8 @@ import io.reactivex.disposables.CompositeDisposable;
 
 @Module
 public class SplashModule {
+
+
     @SplashScope
     @Provides
     SplashPresenter providePresenter(RxSchedulers schedulers,SplashView view ,SplashModel model){

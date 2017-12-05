@@ -10,12 +10,9 @@ import retrofit2.Retrofit;
 
 import retrofit2.converter.gson.GsonConverterFactory;
 
-/**
- * Created by devel on 22/10/2017.
- */
 @Module
 public class DebtApiServiceModule {
-    private static final String BASE_URL = "http://coemygroup.fr/";
+    private static final String BASE_URL = "https://rizaldev.com/api/";
     @AppScope
     @Provides
     DebtApi provideApiService(OkHttpClient client, GsonConverterFactory gson, RxJava2CallAdapterFactory rxAdapter)
