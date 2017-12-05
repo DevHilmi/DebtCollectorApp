@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.rizaldev.debtcollector">
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:name=".application.AppController"
         android:allowBackup="true"
@@ -16,14 +18,10 @@
             android:theme="@style/AppThemeNoActionBar" />
         <activity
             android:name=".screens.register.RegisterActivity"
-            android:theme="@style/AppThemeNoActionBar" >
-
-        </activity>
+            android:theme="@style/AppThemeNoActionBar"></activity>
         <activity
             android:name=".screens.register.BiodataActivity"
-            android:theme="@style/AppThemeNoActionBar" >
-
-        </activity>
+            android:theme="@style/AppThemeNoActionBar"></activity>
         <activity
             android:name=".screens.splash.SplashActivity"
             android:theme="@style/AppThemeNoActionBar">
@@ -35,10 +33,12 @@
         </activity>
         <activity android:name=".screens.bayar_utang.BayarUtangActivity" />
         <activity android:name=".screens.chat.ChatActivity" />
-        <activity android:name=".screens.history.HistoryActivity" />
-        <activity android:name=".screens.main.MainActivity" />
+        <activity
+            android:name=".screens.main.MainActivity"
+            android:theme="@style/AppThemeLight" />
         <activity android:name=".screens.terima_utang.TerimaUtangActivity" />
         <activity android:name=".screens.utang_baru.UtangBaruActivity" />
+        <activity android:name=".screens.notification.NotificationActivity"></activity>
     </application>
 
 </manifest>

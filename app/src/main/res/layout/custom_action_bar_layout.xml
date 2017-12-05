@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:background="@drawable/background"
+    android:orientation="horizontal">
+
+    <ImageButton
+        android:id="@+id/buttonLeft"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@null"
+        android:tint="@color/colorWhite"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.5"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:text="@string/app_name"
+        android:textColor="@color/colorWhite"
+        android:textSize="20sp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+
+        <ImageButton
+            android:id="@+id/buttonRight"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:contentDescription="@string/right_button"
+            android:src="@drawable/ic_action_notification"
+            android:tint="@color/colorWhite"
+            android:visibility="invisible" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:paddingBottom="20dp"
+            android:paddingEnd="0dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="0dp"
+            android:paddingStart="10dp"
+            android:paddingTop="0dp">
+
+            <TextView
+                android:id="@+id/textNotificationCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_small"
+                android:gravity="center"
+                android:text="@string/placeholder_one"
+                android:visibility="invisible"
+                android:textColor="@color/colorWhite"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                tools:ignore="SmallSp" />
+        </RelativeLayout>
+    </FrameLayout>
+</LinearLayout>

@@ -6,4 +6,11 @@
     <color name="colorWhite">#ffffff</color>
     <color name="colorGrey">#aeaeae</color>
     <color name="colorBlack70">#464646</color>
+    <color name="colorBlack40">#848484</color>
+    <color name="colorRed">#b90202</color>
+    <color name="colorWhite70">#e1e1e1</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorBlack80">#2a2a2a</color>
+    <color name="colorBlack50">#333333</color>
+    <color name="colorBlack20">#cecece</color>
 </resources>

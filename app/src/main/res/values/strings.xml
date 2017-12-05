@@ -27,4 +27,12 @@
     <string name="image_other">Image other</string>
     <string name="input_your_text_here">Input your text here</string>
     <string name="send">Send</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="left_button">Left Button</string>
+    <string name="right_button">Right Button</string>
+    <string name="placeholder_one">placeholder one</string>
+    <string name="border">border</string>
+    <string name="profile_pict">profile pict</string>
 </resources>
