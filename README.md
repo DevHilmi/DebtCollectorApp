@@ -1,3 +1,3 @@
-# DebtCollectorApp
+ # DebtCollectorApp
 
-college final project.
+college final project. Unfinished (Server down)
