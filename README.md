@@ -1,4 +1,4 @@
- # DebtCollectorApp
+  # DebtCollectorApp (Deprecated)
 
 college final project. Unfinished (Server down) <br>
 
